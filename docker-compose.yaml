@@ -1,0 +1,28 @@
+version: "3"
+services:
+  mysql:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - 3306:3306
+    networks:
+      - webnet
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: nestjs
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    links:
+      - mysql:3306
+    depends_on:
+      - mysql
+    ports:
+      - 3000:3000
+    networks:
+      - webnet
+
+networks:
+  webnet:

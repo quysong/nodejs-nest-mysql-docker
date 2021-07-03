@@ -31,6 +31,8 @@ async function bootstrap() {
     }),
   );
 
-  await app.listen(4000);
+  const port = 3000;
+  await app.listen(port);
+  console.log(`Listening on port ${port}`)
 }
 bootstrap();
