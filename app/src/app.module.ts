@@ -8,13 +8,13 @@ import { TaskModule } from './task/task.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql' as 'mysql',
-      host: 'mysql',
+      host: 'localhost', // For run docker: mysql; For run normally with local mysql server: localhost
       port: 3306,
       username: 'root',
-      password: 'root',
+      password: '', // For run docker: root; For run normally with local mysql server: ''
       database: 'nestjs',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true,
+      synchronize: false,
     }),
     TaskModule
   ],
